@@ -1,0 +1,10 @@
+cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+
+mysql -u root -p;
+
+Sql1234$
+
+create dtabase name1;
+
+use name1;
+

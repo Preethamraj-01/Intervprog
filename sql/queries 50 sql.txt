@@ -1,0 +1,421 @@
+create database qeries50;
+
+use qeries50;
+ 
+ create table worker1(
+w_id int not null primary key auto_increment,
+fname char(10),
+lname char(10),
+salary int,
+joining_date date,
+dept char(10));
+
+
+create table title1(
+w_rid int,
+w_title char(23),
+affected_from datetime,
+foreign key (w_rid) references worker1(w_id) on delete cascade);
+ 
+ 
+create table bonus1(
+w_rid int ,
+bamt int,
+bdate date,
+foreign key (w_rid) references worker1(w_id) on delete set null);
+
+
+insert into worker1 values('1','monika','arora','100000','2014-03-05','HR');
+insert into worker1 values('2','radhika','ar1','200000','2014-10-05','admin');
+insert into worker1 values('3','vishal','sam','20000','2014-03-05','HR');
+insert into worker1 values('4','preet','raj','1000000','2019-11-05','admin');
+insert into worker1 values('5','rakshitha','bs','500000','2014-08-05','admin');
+insert into worker1 values('6','hemanth','kumar','8000','2020-06-15','account');
+insert into worker1 values('7','hema','malini','9000','2015-03-05','admin');
+
+select * from worker1;
+
+
+
+insert into title1 values('1','manager','2016-03-25');
+insert into title1 values('2','executive','2017-04-21');
+insert into title1 values('7','executive','2016-03-20');
+insert into title1 values('5','manager','2016-07-20');
+insert into title1 values('4','asst.manager','2019-03-21');
+insert into title1 values('7','executive','2016-06-20');
+insert into title1 values('6','asst.manager','2020-09-28');
+
+delete from title1;
+select * from title1;
+delete from title1 where w_rid='2';
+
+insert into bonus1 values('1','5000','2016-03-20');
+insert into bonus1 values('2','3000','2016-04-21');
+insert into bonus1 values('3','4000','2016-02-25');
+insert into bonus1 values('1','6000','2016-06-20');
+insert into bonus1 values('2','2000','2016-04-23');
+
+select * from title1;
+select * from bonus1;
+select * from worker1;
+
+
+-- 1.write sql query to fetch "fname" from worker1 using alias name as <workername>
+
+-- aliasing
+select fname as worker_name from worker1;
+
+-- 2. write sql query to fetch fname from worker1 in uppercase
+
+-- UPPERCASE---> upper()
+
+select upper(fname) from worker1;
+
+-- lower()
+select lower(fname) from worker1;
+
+
+-- 3. write query to fetch unique values of dept from woker1
+
+-- DISTINCT --> group by (without ggregate function)
+select distinct dept from worker1;
+
+select dept from worker1 group by dept;
+
+-- 4.to print 1st 3 characters of fname from woker1 table
+
+-- substring(string,startindex,no. of chars)
+
+select substring(fname,1,3) from worker1;
+
+-- sql query to find position of alphabet 'i' in the fname colmn 'radhika' from worker1
+
+-- instr(string,char)
+
+select instr(fname,'i') from worker1 where fname='radhika';
+
+-- sql query to remove white spaces from right side of worker table and print fname
+
+
+-- '  sql'  -->  after ltrim === 'sql'
+select ltrim(fname) from worker1;
+
+
+-- 8.query to fetch unique val of dept from worker and print its length
+
+
+select distinct length(dept),dept from worker1;
+
+
+-- 9. sql query to query and print fname woker after replacing 'a' with 'A'
+
+select replace(fname,'a','A') from worker1;
+
+-- 10.sql query to combine both fname , lname in to single colmn
+-- space is just to separate them (not mandatory)
+select concat(fname,' ',lname) as completename from worker1;
+
+-- 11.sql query to print all worker details from woker1 order by fname ascending
+
+select * from worker1 order by fname;
+
+-- descending
+select * from worker1 order by fname desc;
+
+-- 12.. oder by fname ascending dept descending
+
+select * from worker1 order by   dept desc , fname asc;
+
+-- 13. to print details fname with "hema" and "rakshitha" 
+-- use in for more than 1
+select * from worker1 where fname in('hema','rakshitha');
+
+
+-- 14. to print details excluding fname with "hema" and "rakshitha" 
+
+select * from worker1 where fname not in('hema','rakshitha');
+
+-- 15. to print details of workers with dept 'admin'
+
+select * from worker1 where dept='admin';
+
+-- adminstartion etcc
+select * from worker1 where dept like 'admin%';
+
+-- 16.print details of wokers whose fname contains 'a'
+
+select * from worker1 where fname like '%a%';
+
+
+-- 17.print details of wokers whose fname ends with 'a'
+
+select * from worker1 where fname like '%a';
+
+
+select * from worker1;
+
+-- 18. to print details whose fname starts with r and contains seven element
+
+select * from worker1 where fname like 'r______';
+
+select * from worker1 where fname like '________a';
+
+-- ***  name starting with vowels
+
+select * from worker1 where substring(fname,1,1)  in ('a','e','i','o','u');
+
+select * FROM worker1 WHERE fname REGEXP '^[^aeiou]';
+
+-- 19. to print details whose salaray btwn 10000 and 500000
+
+select * from worker1 where salary between 10000 and 500000;
+
+
+-- 20.details of workers joined in 'march 2015'
+
+select * from worker1 where year(joining_date)=2015 and month(joining_date) =3;
+
+
+select * from worker1 where year(joining_date)=2014;
+
+
+-- 21. fetch count of emp working in dept 'admin'
+
+select count(dept) from worker1 where dept='admin';
+
+select dept,count(*) from worker1 where dept='admin';
+
+
+-- 22. fetch full names with salaries >=5000 and <=100000
+
+select concat(fname,' ',lname) as fullname,salary from worker1 where salary between 5000 and 100000;
+
+
+-- 23.fetch no.of workers for each dept in desc order.
+
+select count(*),dept from worker1 group by dept order by count(*) desc;
+
+select count(w_id) as no_of_worker,dept from worker1 group by dept order by count(w_id) desc;
+
+
+-- 24. print details of workers who are managers 
+
+select w.*,t.* from worker1 w inner join title1 t on t.w_title = 'manager';
+
+select w.*,t.* from worker1 w inner join title1 t on w.w_id=t.w_rid where t.w_title = 'manager';
+
+select * from worker1 w inner join title1 t on w.w_id=t.w_rid where t.w_title = 'manager';
+
+-- only worker details
+select w.* from worker1 w inner join title1 t on w.w_id=t.w_rid where t.w_title = 'manager';
+
+select * from title1;
+
+-- 25. fetch number(> 1) of same title in org of diff types
+
+select w_title,count(w_title) as no_of_workera_as_mgr from title1 group by w_title having count(w_title>1);
+
+
+-- 26. to print odd rows only in table
+
+select * from worker1 where mod(w_id,2)!=0;
+
+-- similar to !=  -->  <>
+select * from worker1 where mod(w_id,2)<>0;
+
+-- 27.only even rows
+
+select * from worker1 where mod(w_id,2)=0;
+
+select * from title1;
+
+select * from title1 where mod(w_rid,2)=0;
+
+-- 28. to clone table from another table
+
+create table worker_clone like worker1;
+
+desc worker_clone;
+
+-- to insert same values
+
+insert into worker_clone select * from worker1;
+
+select * from worker_clone;
+
+
+-- 29.to fetch intersecting records from tables
+
+select worker.* from worker1 
+inner join
+worker_clone using(w_id);
+
+-- 30.to show records from one table that not present in another
+-- minus
+
+select * from worker1 left join worker_clone using(w_id) where worker_clone.w_id is null;
+
+-- 31.to show current date and time
+
+select now();
+
+select curdate();
+
+-- 32. to show top n(say 5 ) records from table order by desc salary
+
+select * from worker1 limit 5;
+
+select * from worker1 order by salary desc limit 5  ;
+
+
+-- 33.to determine nth (say 5) highest salaray from table
+
+
+select * from worker1 order by salary desc limit 5 ;
+
+-- top 1 salary
+
+select * from worker1 order by salary desc limit 1;
+
+-- top 3
+
+select * from worker1 order by salary desc limit 2,1 ;
+
+-- 34. 5th highest salary without limit key word
+
+select fname,salary from worker1 w1
+where 5 = (select count(distinct (w2.salary)) from worker1 w2 where w2.salary>=w1.salary);
+
+select fname,salary from worker1 w1
+where 4 = (select count(distinct (w2.salary)) from worker1 w2 where w2.salary>w1.salary);
+
+
+-- 35.to fetch list of employment with same salary
+
+-- joining 2 table without join
+select w1.* from worker1 w1,worker1 w2 where w1.salary=w2.salary  and w1.w_id !=w2.w_id;
+
+-- 36.to show 2nd highest salary from table
+
+-- USING LIMIT
+select fname from worker1 order by salary desc limit 1,1;
+
+-- USING CORRELATED SUB QUERY
+select fname from worker1 w1 
+where 2 = (select count(distinct (w2.salary)) from worker1 w2 where w2.salary>=w1.salary);
+
+-- USING SUB QUERY
+
+ -- can be done for 2nd highest , tedious for others
+ 
+ select fname,max(salary) from worker1;
+
+select fname,salary from worker1 order by salary desc ;
+
+select max(salary) from worker1 where salary not in (select max(salary) from worker1);
+
+-- 37. to show one row twice in results
+
+select * from worker1
+union all
+select * from worker1;
+
+select * from worker1
+union all
+select * from worker1 order by w_id;
+
+-- 38.to get details workers who dont get bonus
+-- minus
+
+select w.* from worker1 w left join bonus1 b on w.w_id=b.w_rid where b.w_rid is null;
+
+-- SUB QUERY
+select worker1.* from worker1 where w_id not in (select w_rid from bonus1);
+
+
+-- 39. to fetch 1st 50% records from table
+
+-- no.of rows
+select count(*) from worker1 ;
+
+select * from worker1 where w_id <=(select count(w_id) /2 from worker1); 
+
+
+-- no.of colmns
+SELECT count(column_name) as Number 
+
+FROM information_schema.columns 
+
+WHERE table_name='title1';
+
+-- 40. to fetch dept that have less than 4 ppl in it
+
+select  dept,count(dept) as count_ppl from worker1 group by dept having count(dept)<=4;
+
+
+ select min(salary) from worker1;
+ 
+ 
+ -- 41 . to show all dept along with no.of ppl in it
+ 
+ select  dept,count(dept) as count_ppl from worker1 group by dept ;
+ 
+ 
+ -- 42. to show last record from worker1 table
+ 
+ select * from worker1 where w_id > ( select count(w_id)-1 from worker1);
+ 
+ select * from worker1 where w_id = (select max(w_id) from worker1);
+ 
+ select * from worker1 order by w_id desc limit 1;
+ 
+ 
+-- 43.to fetch 1st row of a table
+
+select * from worker1 limit 1;
+
+ select * from worker1 where w_id = (select min(w_id) from worker1);
+
+  
+-- 44.to fetch last 5 records from table
+
+select * from worker1 where w_id > (select count(w_id)-5 from worker1);
+
+ select * from worker1 order by w_id desc limit 5;
+
+-- reorder it 
+
+ (select * from worker1 order by w_id desc limit 5) order by w_id;
+
+-- 45. to print name of emp having highest salary in each dept
+
+
+select fname,dept,max(salary) from worker1 group by dept;
+
+-- 46. top three max salries from table use co rerelated subquey
+
+select * from worker1 order by salary desc limit 2,1;
+
+select * from worker1 w1 where 3 >= (select count(distinct (w2.salary)) from worker1 w2 where w2.salary>=w1.salary) order by w1.salary desc;
+
+
+-- 47. top three min salries from table use co rerelated subquey
+
+select * from worker1 order by salary asc limit 3;
+
+select * from worker1 w1 where 3 >= (select count(distinct (w2.salary)) from worker1 w2 where w2.salary<=w1.salary) order by w1.salary ;
+
+-- 48. to fetch nth max salary from table
+
+select * from worker1 w1 where n >= (select count(distinct (w2.salary)) from worker1 w2 where w2.salary>=w1.salary) order by w1.salary desc;
+
+
+-- 49.to fetch dept along with total sal paid ecah of them
+
+select * from worker1;
+
+select dept,sum(salary) from worker1 group by dept order by sum(salary) desc;
+
+-- 50. to fetch names of workers who earn highest salary
+
+select fname,dept,max(salary) from worker1 group by dept;

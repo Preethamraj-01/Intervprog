@@ -1,0 +1,79 @@
+use org;
+create table emp(
+id int primary key,
+fname varchar(10),
+lname varchar(10),
+Age int,
+email varchar(10),
+city  varchar(10));
+
+
+
+create table cient(
+c_id int primary key,
+cfname  varchar(10),
+clname  varchar(10),
+cage  varchar(10),
+cemail  varchar(10),
+phone int,
+ccity  varchar(10),
+cempid  int,
+
+foreign key (cempid) references emp(id) on delete cascade);
+
+
+create table project (
+pid int primary key,
+pempid int,
+name  varchar(10),
+stdate date,
+pcid int,
+foreign key (pempid) references emp(id) on delete set null,
+foreign key (pcid) references cient(c_id) on delete cascade);
+
+-- INNER JOIN
+
+-- enlist all emp id,names along with project allocated to them.
+
+select e.id,e.fname,p.id,p.name from emp as e inner join project p  on e.id=p.pid;
+
+-- fetch out all the employee id and their contact details who have been working from jaipur with clients name working in hyderabad
+
+
+select e.id,e.phone,c.name from emp  as e inner join cient as c on e.id=c.c_id where e.city='jaipur' and c.ccity='hyderabad';
+
+-- OUTER JOIN
+
+-- LEFT JOIN
+
+
+-- fetch each project allocated to each emp
+
+select e.*,p.pname,p.pid from emp as e left join project as p on e.id=p.pid ;
+
+
+select * from emp as e left join project as p on e.id=p.pid ;
+
+
+-- RIGHT JOIN
+
+-- list out all project along with emp's name and their emailid.
+
+select e.name,p.name from emp as e right join project as p on e.id=p.pid;
+
+select p.name,p.pid,e.id,e.name from emp as e right join project as p on e.id=p.pid;
+
+-- cross join
+
+-- list all combinations of possible emp's name and projects that can exist
+
+
+-- total rows 5*5 = 25
+select e.id,e.name,p.pid,p.name from emp as e cross join project p on e.id=p.pid;
+
+-- WITHOUT JOIN
+
+select e.id,e.fname,p.id,p.name from emp as e , project p  WHERE e.id=p.pid;
+
+
+
