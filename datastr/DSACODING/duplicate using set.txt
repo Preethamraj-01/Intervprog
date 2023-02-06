@@ -1,0 +1,75 @@
+import java.util.ArrayList;
+
+public class Solution {
+
+	public static int findDuplicate(ArrayList<Integer> arr) {
+
+		LinkedHashSet<Integer> l=new LinkedHashSet<>();
+    for(int i=0;i<arr.size();i++)
+    {
+        
+        if(l.contains(arr.get(i))){
+            return arr.get(i);
+        }
+        
+        l.add(arr.get(i));
+    }
+        return 0;
+    }
+}
+
+
+
+
+
+        
+        
+        
+
+        
+
+
+        
+        
+        
+
+	
+
+        
+        
+        
+    
+
+
+        
+  //to find more than 1 duplicate element and return  a ArrayList      
+        
+    
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        
+        
+
+  LinkedHashSet<Integer> l=new LinkedHashSet<>();
+        ArrayList<Integer> r=new ArrayList<>();
+    for(int i=0;i<nums.length;i++)
+    {
+        
+        if(l.contains(nums[i])){
+            r.add(nums[i]);
+        }
+        
+        l.add(nums[i]);
+    }
+        return r;
+    }
+}
+	
+
+        
+        
+        
+    
+
+	
+

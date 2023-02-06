@@ -1,0 +1,164 @@
+//REVERSE ARRAY USING ARRAYLIST
+
+package Array;
+import java.util.ArrayList;
+import java.util.*;
+
+public class Array1b {
+	
+	public static void main(String args[]) {
+		
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		 arr.add(10);
+	      arr.add(20);
+	      arr.add(30);
+	      arr.add(40);
+	      arr.add(50);
+		int m = 2;
+		
+		reverseArray(arr,m);
+	}
+		
+	
+	    public static void reverseArray(ArrayList<Integer> arr, int m)
+	    {
+	        // Write your code here.
+	        int s=m+1;
+	        int e = arr.size()-1;
+	        
+	        while(s<=e){
+	            
+	            Collections.swap(arr,s,e);
+	           
+//	            
+//	            int temp = arr.get(s);
+//	            
+//	            arr.get(s) = arr.get(e);
+//	            
+//	            arr.get(e)=temp;
+//	            
+//	            WRONG WAY
+//	        	
+//	        	 int n1= arr.get(s);
+//	             int n2=arr.get(e);
+//	             
+//	           
+//	             int temp=n1;
+//	             n1=n2;
+//	             n2=temp;
+//	             
+//	             
+//	             arr.add(s,n1);
+//	             arr.add(e,n2);
+//	            
+	            s++;
+	            e--;
+	            
+	        }
+	        
+	        System.out.println(arr);
+	        
+	    }
+	}
+
+
+package Array;
+import java.util.ArrayList;
+import java.util.*;
+
+public class Array1b {
+	
+	public static void main(String args[]) {
+		
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		 arr.add(10);
+	      arr.add(20);
+	      arr.add(30);
+	      arr.add(40);
+	      arr.add(50);
+		int m = 2;
+		
+		reverseArray(arr,m);
+	}
+		
+	
+	    public static void reverseArray(ArrayList<Integer> arr, int m)
+	    {
+	        // Write your code here.
+	        int s=m+1;
+	        int e = arr.size()-1;
+	        
+	        while(s<=e){
+	            
+	            Collections.swap(arr,s,e);
+	           
+//	            
+//	            int temp = arr.get(s);
+//	            
+//	            arr.get(s) = arr.get(e);
+//	            
+//	            arr.get(e)=temp;
+//	            
+//	            WRONG WAY
+//	        	
+//	        	 int n1= arr.get(s);
+//	             int n2=arr.get(e);
+//	             
+//	           
+//	             int temp=n1;
+//	             n1=n2;
+//	             n2=temp;
+//	             
+//	             
+//	             arr.add(s,n1);
+//	             arr.add(e,n2);
+//	            
+	            s++;
+	            e--;
+	            
+	        }
+	        
+	        System.out.println(arr);
+	        
+	    }
+	}
+
+
+
+package Array;
+
+import java.util.Arrays;
+
+public class ReverseArray {
+	
+	static int[] reverse(int a[],int m) {
+		
+		
+		int s=m+1;
+		int e=a.length-1;
+		while(s<e) {
+			
+			int temp=a[s];
+			a[s]=a[e];
+			a[e]=temp;
+			
+			s++;
+			e--;
+		}
+		
+		return a;
+	}
+	
+	
+	public static void main(String args[]) {
+		
+		int a[] = {2,3,4,5,6,7,8,10};
+		int m=3;
+		
+		int res[] = reverse(a,m);
+		
+		System.out.println(Arrays.toString(res));
+	}
+
+}
+

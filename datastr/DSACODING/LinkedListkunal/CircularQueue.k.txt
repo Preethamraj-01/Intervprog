@@ -1,0 +1,102 @@
+package QueueDS;
+
+public class CircularQueue {
+
+			int[] queue ;
+			int defaultsize = 10;
+			
+			int front=0;
+			int end = -1;
+			
+			
+			//constructor
+			
+			//WHEN YOU DONT PASS SIZE 
+			public CircularQueue() {
+				
+				this.queue=new int[defaultsize];
+				
+			}
+			
+			
+			
+			CircularQueue(int size){
+				
+				this.queue = new int[size];
+				
+			}
+			
+			public void insert(int item) {
+				
+				if(end == queue.length-1)
+					System.out.println("CircularQueue is full");
+				
+				
+				end++;
+				
+				queue[end]=item;
+				
+				System.out.println("CircularQueue after insert");
+				
+				display();
+				
+				
+			}
+			
+			public void remove() {
+				
+				if(front == end+1)
+					System.out.println("CircularQueue is empty");
+				
+				
+				
+				
+				System.out.println("Removed item is "+queue[front]);
+				front++;
+				
+				System.out.println("CircularQueue after removing item");
+				display();
+				
+			}
+			
+			public void display() {
+				
+				
+				
+		     	for(int index=front; index<=end;index++) {
+				
+					System.out.println(queue[index]);
+					
+				}
+				
+				
+				
+			}
+			
+
+			public static void main(String[] args) {
+				
+				//CircularQueue q = new CircularQueue(5);
+				CircularQueue q = new CircularQueue();
+				q.insert(50);
+				q.insert(5);
+				q.insert(88);
+				q.insert(6);
+				q.insert(8);
+			//	q.insert(4);//QUEUE IS FULL
+
+				
+				q.remove();
+				q.remove();
+				q.remove();
+				q.remove();
+				q.remove();
+			//	q.remove();//CircularQueue is empty
+			}
+
+		
+
+
+	
+
+}

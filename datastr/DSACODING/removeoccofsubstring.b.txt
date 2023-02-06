@@ -1,0 +1,19 @@
+//TO REMOVE OCCURENCE OF A SUBSTRING
+EG:  i/p --- "aabababa"
+     o/p---- "ba"
+class Solution {
+    public String removeOccurrences(String s, String part) {
+        
+        
+        // String n=s;/NO NEED TO TAKE NEW STRING OR ELSE TIME LIMIT GETS EXCEEDED
+        while(s.contains(part)){
+         s= s.replaceFirst(part,"");
+        // n=n.replaceAll(part,"");//FAILS BECOS IT REMOVES ALL OCCURENCE
+            
+            continue;
+        
+        }
+     return s; 
+        
+    }
+}

@@ -1,0 +1,23 @@
+
+int peakElement(int arr[], int n)
+{
+   // Your code here
+   int k=0;
+  int peak=arr[0];
+   
+  for(int i=1;i<n;i++){
+      
+      if(arr[i]>peak){
+          
+          peak=arr[i];
+          
+          k=i;
+      }
+      
+      
+  }
+  
+  return k; 
+  
+  
+}

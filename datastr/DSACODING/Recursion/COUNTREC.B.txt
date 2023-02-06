@@ -1,0 +1,92 @@
+import java.util.*;
+public class Countingrec {
+
+	public static void main(String args[]) {
+		
+		
+		Scanner s=new Scanner(System.in);
+		int n;
+		System.out.println("enter number ");
+		n=s.nextInt();
+		
+		int res=count(n);
+//	     count(n);
+		
+		
+		System.out.println("sum of n natural no's"+res);
+		
+		
+	}
+	
+	
+	
+//	NO NEED TO USE RETURN INT
+	
+
+
+//	public static void count(int n) {
+//		
+//		
+//		//BASE CONDITION
+//		
+//		if(n==0) {
+//			return ;
+//		}
+//		
+//		System.out.print(n + " ");
+//		
+//	
+//		//recursive call
+//	     count(n-1);
+//	}
+//	
+//}
+	
+// O/P  1 2 3 4 5	
+//	public static void count(int n) {
+//		
+//		
+//		//BASE CONDITION
+//		
+//		if(n==0) {
+//			return ;
+//		}
+//		
+//		
+//		
+//	
+//		//recursive call
+//	     count(n-1);
+//	     
+//	     System.out.print(n + " ");
+//	}
+//	
+//}
+
+	
+	//COUNT SUM OF NATURAL NO'S
+	
+public static int count(int n) {
+		
+		
+		//BASE CONDITION
+		
+		if(n==0) {
+			return 0 ;
+		}
+		
+		
+		
+	
+		//recursive call
+	     return count(n-1) + n;
+	     
+	    
+	}
+
+
+}
+	
+
+
+

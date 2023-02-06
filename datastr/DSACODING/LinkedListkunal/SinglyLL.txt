@@ -1,0 +1,324 @@
+
+public class Linkedlist1 {
+
+	
+	private node head;
+	private node tail;
+	
+	private int size ;
+	
+	public Linkedlist1(){
+		
+		this.size=0;
+		
+	}
+	
+	//INNER CLASS 
+	private class node{
+		
+	private int value;
+	private node next;
+	
+	
+	
+	public node(int value) {
+		
+		this.value=value;
+	}
+	
+	
+//IT IS USED TO WHEN WE NEED BOTH VALUE AND NEXT (CHECK inseratatparticularindex)
+	public node(int value,node next) {
+		
+		this.value=value;
+		this.next=next;
+	}
+	
+	 }
+	public void insertatfirst(int val) {
+		
+		node n = new node(val);
+		n.next=head;
+		head=n;
+	
+	//IF U DO NOT MENTION THIS CONDITION THEN " tail " VARIABLE 
+	// WILL BE POINTING TO NEW NODE CREATED EVERY TIME
+		
+	//IF YOU USE THIS CONDITION THEN " tail " VARIABLE WILL BE POINTING TO 	1ST NODE CREATION ONLY
+		if(tail==null) {
+			
+			tail=head;
+		}
+		size+=1;
+		
+	}
+	
+//	public void  insertatlast(int val) {
+//		
+//		if(tail==null) {
+//			
+//			insertatfirst(val);
+//			 
+//			//IF TAIL IS NULL (DOESNOT MAKE DIFFERENCE B/W HEAD AND TAIL) , SO JUST RETURN
+//			return;
+//		}
+//		
+//		
+//		node n = new node(val);
+//		
+//		tail.next=n;
+//		tail=n;
+//		
+//		size++;
+//		
+//	}
+	
+	//INSERTING AT END WITHOUT tail VARIABLE
+	       void insertlastwithouttail(int val) {
+	    
+	    	   node temp=head;
+	        
+	    	   while(temp.next!=null) {
+	    		   
+	    		   temp=temp.next;
+	    		   
+	    		   
+	    	   }
+	    	   
+	    	   
+	    	   node n = new node(val);
+	    	   temp.next=n;
+	    	   temp=n;
+	        	
+	    	   size++;
+	        	 
+	   }
+	
+	 void insertatparticularindex(int val,int pos) {
+		 
+		 if(pos==0) {
+			 insertatfirst(val);
+		  return;
+		 }
+		 
+		 node temp=head;
+		
+		 
+		 for(int i=1;i<pos;i++) {
+			 
+			temp=temp.next;
+			
+			 }
+		 
+		 
+		 
+	
+		 
+		 
+		 node n = new node(val,temp.next);
+		 
+		 
+		 temp.next = n;
+		
+		 
+		 size++;
+		 
+		 
+		 
+//USING TWO VARIABLES
+		 
+//		 node temp=head;
+//		 node front=head;
+//		 
+//		 front = front.next;
+//		 
+//		 for(int i=1;i<pos-1;i++) {
+//			 front = front.next;
+//			 temp=temp.next;
+//			 
+//		 }
+//			 
+//		 node n = new node(val);
+//		 
+//		 temp.next = n;
+//		 n.next=front;
+//		 
+//		 size++;
+//		 
+//		 
+		 
+	 }
+	 
+	 
+	 
+//	 //DELETE A NODE AT FIRST(HEAD) POSITITON
+//	 
+//	 public void deletehead() {
+//		 
+//		 head=head.next;
+//	 if(head==null)
+//		 tail=null;
+//		 
+// }
+	//DELETE AT PARTICULAR INDEX USING TWO VARIABLE
+//	 public int delatparindex(int pos) {
+//		 
+//		 if(pos==0) {
+//			 int rem = head.value;
+//			 head=head.next;
+//			 size--;
+//			 return rem;
+//		 }
+//		 node prev=head;
+//		 node front=head;
+//		 
+//		 front=front.next;
+//		 
+//		 for(int i=1;i<pos;i++) {
+//			 
+//			 prev=prev.next;
+//			 front=front.next;
+//	
+//		 }
+//		 
+//		 int remelement = front.value;
+//		 
+//		 prev.next=front.next;
+//		 
+//		 size--;
+//		 
+//		 return remelement;
+//	 }
+	 
+	 //DELETE USING SINGE VARIABLE
+	 
+   public int delatparindex1(int pos) {
+		 
+		 if(pos==0) {
+			 int rem = head.value;
+			 head=head.next;
+			 size--;
+			 return rem;
+		 }
+		 
+		 node temp=head;
+		
+		 
+		
+		 for(int i=1;i<pos;i++) {
+			 
+			 temp=temp.next;
+			
+	
+		 }
+		 
+		 int remelement = temp.next.value;
+		 
+		 temp.next=temp.next.next;
+		 
+		 size--;
+		 
+		 return remelement;
+	 }
+	 
+   
+   //TO CHECK IF ELEMENT PRESENT OR NOT AND RETURN INDEX OF A PARTICULAR ELEMENT 
+   
+   public void check(int val) {
+	   
+	   node temp = head;
+	   int index=0;
+	   while(temp!=null) {
+		   
+		   if(temp.value == val) {
+			   System.out.println("Value present");
+			   System.out.println("value found at index "+ index);
+			   return;
+		   }
+		   
+		   index++;
+		  temp=temp.next;//INCREMENT
+	   }
+	   
+	   System.out.println("value not found");
+	   
+   }
+   
+   //TO RETURN ELEMENT OF A PARTICULAR INDEX
+    public int element(int index) {
+    	
+    	node temp=head;
+    	
+    	for(int i=0;i<index;i++) {
+    		
+    	 temp=temp.next;	  
+    		
+    	}
+    	
+    	return temp.value;
+    }
+	
+	
+	public void dispaly() {
+		
+		node temp=head;//NOT TO DESTROY ACTUAL CONSTRUCTION OF LL....TAKE ''temp''
+		
+		while(temp!=null) {
+			System.out.print(temp.value + " -> ");
+			temp=temp.next;//INCREMENTING
+		}
+		
+		System.out.println("end");
+		System.out.println(size);
+
+	}
+	
+	 
+ public static void main(String args[]) {
+		
+		Linkedlist1 l = new Linkedlist1();
+		
+		Linkedlist1.node n = l.new node(10);
+		
+	    l.insertatfirst(10);
+		l.insertatfirst(20);
+//		l.insertatlast(100);
+//		l.insertatlast(110);
+//		l.insertatlast(40);
+		
+		
+		//WITHOUT tail
+		
+		l.insertlastwithouttail(100);
+		l.insertlastwithouttail(110);
+		l.insertatparticularindex(1, 3);
+		
+//	    l.deletehead();
+//		l.delatparindex(1);
+//		l.delatparindex(3);
+//		
+//		l.dispaly();
+//      int removed =  l.delatparindex(0);
+//      
+//      System.out.println("removed element is " + removed);
+//      	
+//		l.dispaly();
+//		
+//		int removed1 =  l.delatparindex(1);
+//	      
+//	    System.out.println("removed element is " + removed1);
+		
+		
+//		
+//		l.dispaly();
+//		System.out.print("removed eleemnt is = ");
+//		System.out.println( l.delatparindex1(2));
+//	      	
+	//	l.check(110);
+		
+		int index=0;
+		System.out.println("value at the " +index+ " is "+l.element(index));
+		l.dispaly();
+	}
+	
+}

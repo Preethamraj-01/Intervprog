@@ -1,0 +1,109 @@
+package StackDS;
+
+public class Stack {
+
+	int[] stack ;
+	int  defaultsize = 10 ; 
+	
+	int top=-1;
+	
+//CONSTRUCTOR USED WHEN SIZE IS NOT PASSED
+	public Stack() {
+		
+		this.stack= new int[defaultsize];
+		
+	}
+	
+	public Stack(int size) {
+		
+		this.stack= new int[size];
+	}
+	
+	
+	public void push(int item) {
+		
+		if(top == stack.length-1) 
+			System.out.println(" Stack overflow");
+		
+
+					
+		top++;
+		stack[top]=item;
+		
+		System.out.println("After push stack is");
+		display();
+	}
+	
+	
+	
+	public void pop() {
+		
+		if(top==-1)
+			System.out.println(" Stack underflow");
+		
+		
+		System.out.println("popped item is "+stack[top]);
+		top--;
+		System.out.println("After pop stack is");
+		
+		display();
+	}
+	
+	//TO RETURN ELEMENT top IS POINTING TOO
+	public void peek() {
+		
+		System.out.println(" peek element is " +stack[top]);	
+		
+	}
+	
+	
+	public void display() {
+		int k = top;
+		
+		while(k!=-1) {
+			
+			System.out.println(stack[k]);
+			k--;
+		}
+		
+		
+	}
+	
+	public static void main(String args[]) {
+		
+		Stack s = new Stack(5);//IF YOU PASS A SIZE ,HERE size=5;
+		
+	//	Stack s = new Stack();//HERE SIZE NOT MENTIONED , SO size = default size i.e, 10
+		
+		
+		
+		s.push(1);
+		s.push(10);
+		s.push(100);
+		
+		s.peek();
+		
+		s.push(20);
+		
+		s.peek();
+		
+		s.push(15);
+		
+		s.push(5);
+		s.push(87);
+		s.push(99);
+		s.push(23);
+		
+		
+	//	s.push(150);//throws an exception "STACK OVERFLOW"
+//		s.pop();
+//	    s.pop();
+//	    s.pop();
+//	    s.pop();
+//	    s.pop();
+	 //   s.pop();//throws exception "STACK UNDERFLOW"
+	 
+		
+		
+	}
+}

@@ -1,0 +1,90 @@
+
+//TO FIND FIRST AND LAST OCCURENCE OF AN ELEMENT IN AN ARRAY AND TOTAL OCCURENCE OF THAT ELEMENT
+public class FLoccurence {
+
+
+	
+	
+	static public int fo(int a[],int key) {
+		
+		java.util.Arrays.sort(a);
+		int s=0,e=a.length-1;
+//		int mid= (s+e)/2;
+      	int mid= s+(e-s)/2;//for BIG INTEGERS
+        
+      	 int ans=0;
+		
+		while(s<=e) {
+			
+			if(a[mid]==key) {
+				
+				ans=mid;
+				e=mid-1;
+			//	return mid; 
+			}
+			
+		 if(key>a[mid]) {
+				s=mid+1;
+			}
+			
+			if(key<a[mid]) {
+				e=mid-1;
+			}
+			
+//			mid=(s+e)/2;
+		    mid= s+(e-s)/2;
+				
+		}
+	 return ans;
+	}
+	
+	
+static public int lo(int a[],int key) {
+		
+		java.util.Arrays.sort(a);
+		int s=0,e=a.length-1;
+//		int mid= (s+e)/2;
+      	int mid= s+(e-s)/2;//for BIG INTEGERS
+        
+      	 int ans=0;
+		
+		while(s<=e) {
+			
+			if(a[mid]==key) {
+				
+				ans=mid;
+				s=mid+1;
+			//	return mid; 
+			}
+			
+		 if(key>a[mid]) {
+				s=mid+1;
+			}
+			
+			if(key<a[mid]) {
+				e=mid-1;
+			}
+			
+//			mid=(s+e)/2;
+		    mid= s+(e-s)/2;
+				
+		}
+	 return ans;
+	}
+	public static void main(String args[]) {
+		
+		//Binarysearch b=new Binarysearch();
+		int a[]=new int[] {0,0,1,2,1,2,2,2,2};
+		int key=2;
+		int fo=fo(a,key);
+		int lo=lo(a,key);
+		System.out.println("index is ");
+		System.out.println(fo+"   "+lo);
+		System.out.println(" total occurence"+((lo-fo)+1));
+		
+		
+	}
+
+}
+
+

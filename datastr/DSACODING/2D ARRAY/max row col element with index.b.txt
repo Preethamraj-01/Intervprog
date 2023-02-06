@@ -1,0 +1,120 @@
+
+
+
+//EASY APPROACH
+
+import java.util.Scanner;
+
+public class Rowwisesum2d {
+
+	public static void main(String args[]) {
+		
+		
+
+		int arr[][]=new int[3][4];
+		Scanner s=new Scanner(System.in);
+		
+		for(int i=0;i<3;i++) {
+			for(int j=0;j<4;j++) {
+				
+				arr[i][j]=s.nextInt();
+			}
+		}
+		
+		sum(arr,3,4);
+	}
+	
+	public static void sum(int arr[][],int r,int c) {
+		//int s;
+		int max=0,index=0;
+		for(int i=0;i<c;i++) {  //NOTE CHANGES
+			
+//			s=arr[i][0];
+			int s=0;
+			for(int j=0;j<r;j++) {    //NOTE THE DIFFERENCE BETWEEN BELOW AND HERE
+				
+				
+//				s+=arr[i][j];//row wise sum
+				s+=arr[j][i];//col wise sum
+			}
+			
+			
+			if(s>max) {
+				
+				max=s;
+				index=i;//returns col in col sum and row in row wise sum
+			}
+			
+			
+		}
+		System.out.println("max row wise sum = "+max+" row index is = "+index);
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//WRONG APPROACH
+ONLY WORKS FOR SQUARE MATRIX
+
+
+
+
+import java.util.Scanner;
+
+public class Rowwisesum2d {
+
+	public static void main(String args[]) {
+		
+		
+
+		int arr[][]=new int[3][3];
+		Scanner s=new Scanner(System.in);
+		
+		for(int i=0;i<3;i++) {
+			for(int j=0;j<3;j++) {
+				
+				arr[i][j]=s.nextInt();
+			}
+		}
+		
+		sum(arr,3,3);
+	}
+	
+	public static void sum(int arr[][],int r,int c) {
+		//int s;
+		int max=0,index=0;
+		for(int i=0;i<r;i++) {
+			
+//			s=arr[i][0];
+			int s=0;
+			for(int j=0;j<c;j++) {
+				
+				
+//				s+=arr[i][j];//row wise sum
+				s+=arr[j][i];//col wise sum
+			}
+			
+			
+			if(s>max) {
+				
+				max=s;
+				index=i;//returns col in col sum and row in row wise sum
+			}
+			
+			
+		}
+		System.out.println("max row wise sum = "+max+" row index is = "+index);
+		
+	}
+}

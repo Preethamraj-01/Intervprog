@@ -1,0 +1,53 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        
+        int a[]=new int[2];
+        for(int i=0;i<nums.length;i++){
+             for(int j=i+1;j<nums.length;j++){
+                 
+                 
+                 if(nums[i]+nums[j]==target){
+                     
+                     a[0]=i;
+                     a[1]=j;
+                     break;
+                 }
+                 
+             }
+            
+            
+        }
+        
+        return a;
+        
+    }
+}
+
+
+
+ //Time complexity o(n*logn)
+        Arrays.sort(nums);
+
+        int l=0;
+        int r=nums.length-1;
+
+        while(l<r){
+
+
+            if(nums[l]+nums[r]==target){
+                a[0]=nums[l];
+                a[1]=nums[r];
+                break;
+            }
+
+            else if(nums[l]+nums[r]<target){
+                l++;
+            }
+
+            else              //nums[l]+nums[r]>target
+                r--;
+        }
+
+        return a;
+
+    }

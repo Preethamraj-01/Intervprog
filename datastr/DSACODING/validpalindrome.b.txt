@@ -1,0 +1,64 @@
+    
+      String s1=s.replaceAll("[^a-zA-Z0-9]","").toLowerCase();//tO CHECK SINGLE SPACE USE //s
+        
+        int st=0;
+        int en=s1.length()-1;
+        
+        while(st<en){
+            
+            if(s1.charAt(st)!=s1.charAt(en)){
+                return false;
+                    
+            }
+            
+            
+            else{
+                st++;
+                en--;
+ }
+            
+            }
+        return true;
+        
+}
+
+
+
+
+//ANOTHER APPROACH
+
+
+//      int i=0;
+//         int j=s.length()-1;
+//         while(i<j){
+//             char c1=s.charAt(i);
+//             char c2=s.charAt(j);
+//             if(!Character.isLetterOrDigit(c1))//check if it is an Alphanumeric character or not 
+//                 i++;
+//             else if(!Character.isLetterOrDigit(c2))//check if it is an Alphanumeric character or not
+//                 j--;
+//             else if(Character.toLowerCase(c1)!=Character.toLowerCase(c2))//if both are same or not
+//                 return false;
+//             else{//if they are Alphanumeric and same then proceed ahead.
+//                 i++;
+//                 j--;
+//             }
+            
+//         }
+        
+//      return true; 
+//     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

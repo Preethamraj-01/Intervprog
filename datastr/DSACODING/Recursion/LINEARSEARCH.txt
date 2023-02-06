@@ -1,0 +1,110 @@
+//WITH VOID FUNCTION AND TAKING i=i+1 in PROCESSING PART
+
+
+
+import java.util.*;
+public class Linearsearchrec {
+
+	
+	public static void linear(int a[],int target,int i) {
+		
+		//BASE CASE
+		
+		if(a.length==1 || a.length==0) {
+			System.out.println("target found");	
+		  return;
+		}
+		
+		
+		if(a[i]==target) {
+			
+			System.out.print("target found  , ");
+			System.out.println("FOUND AT INDEX = "+i);	
+
+			return;
+		}
+		
+		if(i==a.length-1) {
+			System.out.println("target NOT found");	
+			return;
+		}
+		
+		//PROCESSING
+		i+=1;
+		
+		//rec
+		
+		linear(a,target,i);
+		i=100;//IT DOESN'T MATTER SINCE WE ARE NEITHER RETURNING NOR PRINTING
+		
+	}
+	public static void main (String args[]) {
+		
+		
+		
+		int arr[]= {};
+		
+		
+		Scanner s=new Scanner(System.in);
+		
+		System.out.println("enter target");
+		int target=s.nextInt();
+		int index=0;
+		linear(arr,target,index);
+	}
+	
+	
+}
+
+
+//WITH BOOLEAN AS RETURN TYPE AND UPDATING IN RECURSIVE FUNCTION WITHOUT TAKING PROCESSING PART
+
+import java.util.Scanner;
+public class Updatedlinearrec {
+
+	public static boolean linear(int a[],int target,int size,int index) {
+			
+			
+			//base case
+		 if(size==0)
+			 return false;
+		 
+		 if(a[index]==target)
+			 return true;
+		 
+		 else {
+			 
+			boolean remaining=  linear(a,target,size-1,index+1);
+			 return remaining;
+		 }
+			 
+		      
+			
+			
+			
+		}
+		public static void main (String args[]) {
+			
+			
+			
+			int arr[]= {1,20,10,30,4,2};
+			
+			
+			Scanner s=new Scanner(System.in);
+			
+			System.out.println("enter target");
+			int target=s.nextInt();
+		
+			int size=arr.length-1;
+			boolean res =linear(arr,target,size,0);
+			
+			if(res)
+				System.out.println("target found");
+			
+			else 	System.out.println("target NOT found");	
+		}
+		
+		
+	}
+
+

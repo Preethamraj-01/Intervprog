@@ -1,0 +1,97 @@
+
+public class DoublyLL {
+
+	
+	 node head;
+	 
+	 int size;
+	
+	class node{
+		
+		int value;
+		node next;
+		node prev;
+		
+	
+	//CONSTRUCTOR FOR node
+	 public node(int value) {
+		 
+		 this.value=value;
+	 }
+	
+	 
+	}
+	
+	
+	
+	 public void insertatfirst(int val) {
+		 
+		 
+		 node n = new node(val);
+		 //INITIALLY WHEN NO node IS PRESENT
+		 if(head==null) {
+			 head.prev=null;
+			 head=n;
+			 return;//IMP
+		 }
+		   
+		  n.next=head;
+		  n.prev=null;
+		  head.prev=n;
+		  
+		  head=n;
+		  
+		  }
+	 
+	 
+	 public void insertatlast(int val) {
+		 
+		 node n = new node(val);
+		 
+		 node temp=head;
+		 
+		 while(temp.next!=null) {
+			 
+			 
+			 temp=temp.next;
+			 
+		 }
+		 
+		 temp.next=n;
+		 n.prev=temp;
+		 n.next=null;
+		 
+	 }
+	 
+	  public void dispaly() {
+		  
+		  
+		  node temp=head;
+		  
+		  while(temp!=null) {
+			  
+			  
+			  System.out.print( temp.value+ " -> ");
+			  temp=temp.next;
+		  }
+	    
+		  System.out.print(" end ");
+		  
+		  
+	  }
+	
+	public static void main(String args[]) {
+		
+		
+		DoublyLL dll = new DoublyLL();
+		
+		DoublyLL.node n = dll.new node(1000);
+		
+		dll.insertatfirst(10);
+		dll.insertatfirst(20);
+		
+		dll.insertatlast(100);
+		dll.dispaly();
+		
+	}
+}

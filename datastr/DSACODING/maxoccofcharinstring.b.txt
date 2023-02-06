@@ -1,0 +1,53 @@
+//TO FIND MAX OCCURENCE OF CHAR IN A STRING
+
+
+
+class Solution
+{
+    //Function to find the maximum occurring character in a string.
+    public static char getMaxOccuringChar(String line)
+    {
+        // Your code here
+        
+        int arr[]=new int[26];
+        int count=0;
+        
+        for(int i=0;i<line.length();i++){
+            
+            
+            if(Character.isLowerCase(line.charAt(i))){
+                
+                count =line.charAt(i)-'a';
+                
+                arr[count]++;
+            }
+            
+              
+            // if(Character.isUpperCase(line.charAt(i))){
+                
+            //     count =line.charAt(i)-'A';
+                
+            //     arr[count]++;
+            // }
+        }
+        
+        int max=arr[0],index=0;
+        
+       for(int i=1;i<26;i++){
+        
+        if(arr[i]>max){
+        max=arr[i];
+        
+        index=i;
+    }
+    
+  
+       }  
+        // char f=(char)(97+index);
+        
+        // char f=(char)('a'+index);
+    
+    // return index-(int)'a'; 
+     return (char)('a'+index);
+    } 
+}

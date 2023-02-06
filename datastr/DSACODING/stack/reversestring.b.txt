@@ -1,0 +1,44 @@
+package StackDS;
+import java.util.Stack;
+import java.io.*;
+
+public class ReverseStack {
+
+	public static String reverse(String str,Stack<Character> s) {
+			
+			
+			for(int i=0;i<str.length();i++){
+				
+				s.push(str.charAt(i));
+			}
+			
+			
+			String ans="";
+		
+			while(!s.empty()) {
+				
+				
+				ans+=s.pop();
+				
+				
+			}
+			
+			return ans;
+			
+		}
+		
+		public static void main(String args[]) {
+			
+			
+			String str = "maaaaaa";
+			
+			Stack<Character> s = new Stack<>();
+			
+			String res =  reverse(str,s);
+			
+			System.out.println(res);
+			
+		}
+	}
+
+

@@ -1,0 +1,104 @@
+import java.util.Scanner;
+
+public class Solution {
+
+    static boolean isAnagram(String a, String b) {
+        
+       String str1 =a.toUpperCase();
+       String str2= b.toUpperCase();
+       
+       
+        int al[]=new int[256];
+      //  int bl[]=new int[256];
+      
+      for(int i=0;i<a.length();i++){
+          
+        //  int index=(int)str1.charAt(i);
+          al[str1.charAt(i)]++;
+           }
+        
+        for(int i=0;i<b.length();i++){
+          
+          int index=(int)str2.charAt(i);
+         // bl[index]++;
+         al[index]--;
+           }
+        
+        for(int i=0;i<256;i++){
+            
+            if(al[i]!=0){
+                return false;
+                
+            }
+            
+        }
+     
+       
+        
+       return true;
+            
+        }
+        
+        
+    
+    2nd approach
+package Dsa;
+
+
+    // Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+import java.util.*;
+
+    public class Anagram {
+
+        int a=1;
+        int b=5;
+
+        static boolean isAnagram(String a, String b) {
+            // Complete the function
+
+
+            a=a.toUpperCase();
+            b=b.toUpperCase();
+            char c[]=a.toCharArray();
+            char d[]=b.toCharArray();
+
+            Arrays.sort(c);
+            Arrays.sort(d);
+          //  int j=0;
+
+//              for(int i=0;i<a.length();i++){
+//
+//                  if(c[i]!=d[j]){
+//                     return false;
+//                     }
+//                       j++;
+//              }
+//
+//
+//             return true;
+            System.out.println(c);
+            System.out.println(d);
+
+             return Arrays.equals( c, d);//Important part
+
+        }
+
+        public static void main(String[] args) {
+
+            Scanner scan = new Scanner(System.in);
+            System.out.println("enter a");
+            String a = scan.next();
+            System.out.println("enter b");
+            String b = scan.next();
+            scan.close();
+            System.out.println( a.compareTo(b));
+            boolean ret = isAnagram(a, b);
+
+
+
+            System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+        }
+    }
+

@@ -1,0 +1,42 @@
+
+public class Palindromerec {
+	
+	public static boolean palindrome(String str,int s,int e) {
+		
+		//BASE CASE
+		if(s>e)
+			return true;
+		
+		
+		//PROCESSING
+		
+		
+		//REC
+		if(str.charAt(s)==str.charAt(e))
+				palindrome(str,s+1,e-1);
+
+		
+		//DONT USE PRE AND POST INCREMENT DECREMENT IN RECURSION
+	//	palindrome(str,s++,e--);
+		
+		else 
+			return false;
+		
+		
+		return true;
+		
+}
+	
+	public static void main(String args[]) {
+		
+		String str="raars";
+		
+		int s=0;
+		int e=str.length()-1;
+		
+		
+		boolean ans=palindrome(str,s,e);
+		System.out.println(ans);
+		
+	}
+}

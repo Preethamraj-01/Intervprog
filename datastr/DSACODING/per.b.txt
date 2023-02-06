@@ -1,0 +1,48 @@
+class Solution {
+    public boolean checkInclusion(String s1, String s2) {
+        
+        
+//         String s3="";
+//         StringBuilder n = new StringBuilder();
+        
+//         n.append(s1);
+        
+//      s3= s1.reverse();
+        
+        String s3="";
+        
+        for(int i=0;i<s2.length();i++){
+            
+          s3=s2.charAt(i)+s3;  
+            
+        }
+        
+        
+    
+    int i=0,len=s2.length();
+    int len1=s1.length();
+    
+    while(i<len-1){
+        
+        if(s1.equals(s2.substring(i,len1))  || s3.equals(s2.substring(i,len1)) )
+        {
+            
+            return true;
+            
+            
+            
+        }
+           
+        
+        else{
+            
+            i++;
+            len1++;
+        }
+            
+            
+    }
+    
+    return false;
+}
+}

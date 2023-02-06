@@ -1,0 +1,93 @@
+//WITHOUT RECURSION
+
+public class Arrayissorted {
+
+	public static boolean issorted(int arr[]) {
+		
+		
+		int max=arr[0];
+		
+		for(int i=1;i<arr.length;i++) {
+			
+			if(arr[i]>max) {
+				
+				max=arr[i];
+				continue;}
+			
+			else return false;
+		}
+		
+		return true;
+	}
+	
+	
+	
+	
+	public static void main(String args[] ) {
+		
+		
+		int arr[]= {1,3,4,5,20,30};
+		
+//		boolean res=issorted(arr);
+		
+		System.out.println(issorted(arr));
+	}
+}
+
+
+//WITH RECURSION
+
+public class Arrayissortedrec {
+
+	 public static void issorted1(int arr[],int max,int i) {
+		 
+		 
+		 //BASE CASE
+		 //IF ARRAY SIZE IS 1
+		 if(arr.length==1  ) {
+			 System.out.println(true);
+			 return;
+		 }
+			
+		 if(arr[i]<max ) {
+			 System.out.println(false);
+			return;
+		 }
+		 
+		 //PROCESSING
+		 max=arr[i];
+		 i+=1;
+		 
+		 
+		 if(i==arr.length) {
+			 System.out.println(true);
+		     return;
+		 }
+		 
+		 //RECURSION
+		 issorted1(arr,max,i);
+		 
+	 }
+	
+	
+	
+	public static void main(String args[]) {
+		
+		int arr[]= {1,-1};
+		int max=arr[0];
+		issorted1(arr,max,1);
+		System.out.println();
+	}
+}
+
+	
+	
+	
+	public static void main(String args[]) {
+		
+		int arr[]= {1,3,4,50,20,30};
+		int max=arr[0];
+		boolean res=issorted1(arr,max,1);
+		System.out.println(res);
+	}
+}

@@ -1,0 +1,139 @@
+
+public class CircularLL {
+	
+	node head;
+	node tail;
+	
+	int size;
+	
+	
+	class node{
+		
+		int value;
+		node next;
+		
+		
+		public node(int val) {
+			
+			value=val;
+			
+		}
+		
+		
+		
+	}
+	
+	public void insertattail(int val) {
+		
+		node n = new node(val);
+		
+		if(head==null) {
+			
+			head=n;
+			tail=n;
+			return;
+		}
+		
+		tail.next=n;
+		n.next=head;
+		
+		tail=n;//THIS MOVES tail WHENEVER YOU CREATE  A NODE 
+		
+		
+	}
+	
+	
+	public void display() {
+		
+		node temp=head;
+		
+//		System.out.print(temp.value+" -> ");
+//		
+//		
+//		temp=temp.next;
+//		
+//		while(temp!=head) {
+//			
+//			System.out.print(temp.value+" -> ");
+//			temp=temp.next;//INCREMENTING
+//		}
+//		
+//		System.out.print(" end ");
+		
+		
+		if(head!=null) {
+			
+			do {
+				
+				System.out.print(temp.value+" -> ");
+				temp=temp.next;
+			}
+			 while(temp!=head);
+		}
+	
+		System.out.print(" head ");
+	}
+	
+	
+	
+	public int delete (int val) {
+		
+		node temp=head;
+		
+	//IF WE ARE TRYING TO DELETE HEAD
+		if(temp.value==val) {
+			
+			int rem = tail.next.value;
+//			tail.next=tail.next.next;
+//			head=head.next;
+			
+			head=head.next;
+			tail.next=head;
+			return rem;
+		}
+		
+		while(temp.next.value!=val) {
+			
+     		if(temp.next==head) {
+     			
+				System.out.print("\nvalue doesnot exist ");
+				return 0;
+     		}
+		
+			temp=temp.next;
+			
+			
+		}
+		
+		
+		
+		int rem = temp.next.value;
+		temp.next=temp.next.next;
+		
+		return rem;
+	}
+	
+	
+	
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		CircularLL cll = new CircularLL();
+		
+		CircularLL.node n = cll.new node(10);
+		
+        cll.insertattail(8);
+        cll.insertattail(9);
+        cll.insertattail(1);
+        
+        cll.display();
+        
+        if(cll.delete(10)!=0)
+        System.out.println("\nremoved element is " +cll.delete(10));
+        
+        cll.display();
+	}
+
+}

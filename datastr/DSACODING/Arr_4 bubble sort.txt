@@ -1,0 +1,57 @@
+void bubbleSort(int arr[])
+	{
+		int n = arr.length;
+		for (int i = 0; i < n-1; i++){//looping purpose
+                          
+                       boolean check=false;//for optimization
+			for (int j = 0; j < n-i; j++)
+				if (arr[j] > arr[j+1])
+				{
+					// swap arr[j+1] and arr[j]
+					int temp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = temp;
+
+                                       check=true;
+				}
+                       
+                         if(check==false){
+                           break;
+                         }
+	}
+
+	
+
+
+
+
+//MAIN DIFFERENCE IS THAT I USED TO COMPARE i WITH j WHERE AS 
+
+ACTUALLY WE NEED TO COMAPARE j AND j+1 ELEMENT AND SHOULD CONSIDER i AS JUST AN ITERATING VARIABLE...
+
+
+SO THAT EACH STEP IN BUBBLE SORT GETS US A LARGEST ELEMENT AT THE END
+
+
+
+
+
+
+
+void bubbleSort(int arr[])
+	{
+		int n = arr.length;
+		for (int i = 0; i < n-1; i++)
+			for (int j = i+1; j < n; j++)
+				if (arr[i] > arr[j])
+				{
+					// swap arr[j+1] and arr[j]
+					int temp = arr[j];
+					arr[j] = arr[i];
+					arr[i] = temp;
+				}
+	}
+
+
+//another way is 
+Arrays.sort(arr);

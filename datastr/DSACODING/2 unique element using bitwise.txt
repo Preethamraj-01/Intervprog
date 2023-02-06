@@ -1,0 +1,54 @@
+
+import java.util.Arrays;
+
+public class T2uniqueelement {
+
+
+
+
+    public static void main(String[] args) {
+
+        int arr[]=new int[]{5,4,1,4,3,5,1,2};
+        int N=8,res=0,r1=0,r2=0;
+
+        for(int i=0;i<N;i++){
+
+             res=res^arr[i];
+
+        }
+        System.out.println(res);
+
+        int k=0,j=0;
+        int a1[]=new int[N];
+        int a2[]=new int[N];
+
+        for(int i=0;i<N;i++) {
+            if ((arr[i] & 1 )== 1) {//to separate odd and even
+                a1[k] = arr[i];
+                k++;
+            }
+
+            else {
+                a2[j] = arr[i];
+                j++;
+            }
+
+
+        }
+
+        System.out.println(Arrays.toString(a1));
+        System.out.println(Arrays.toString(a2));
+
+        for(int i=0;i<a1.length;i++)
+         r1=r1^a1[i];
+
+        for(int i=0;i<a2.length;i++)
+           r2=r2^a2[i];
+
+
+        System.out.println(r1+ " "+r2);
+
+
+
+    }
+}

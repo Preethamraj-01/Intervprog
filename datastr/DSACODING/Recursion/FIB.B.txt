@@ -1,0 +1,71 @@
+
+public class Fibannoccirec {
+
+	
+	public static void main(String args[]) {
+		
+		
+		//USING LOOP
+		
+		
+		int n=0;
+		
+		int n1=0,n2=1,n3=0;
+		
+		
+		if(n==0)
+			System.out.println(n);
+		
+		if(n==1)
+			System.out.println(n);
+	
+		//USING FOR LOOOP
+		for(int i=1;i<n;i++) {
+			
+			 n3=n2+n1;
+			// System.out.print(n3+" ");
+			 n1=n2;
+			 n2=n3;
+			 
+		}
+		if(n>1)
+		System.out.println(n3);
+			
+		int res=fib(n);
+	//	System.out.print( " fibannocci value of  "+n + " is " + res);
+	}
+	
+	
+
+              //USING RECURSION
+//	public static int fib(int n) {
+//		
+//		
+//		if(n==0)
+//			return 0;
+//		
+//		if(n==1)
+//			return 1;
+//	//	int fib= fib(n-1)+fib(n-2);
+//		
+//		return fib(n-1)+fib(n-2);
+//	}
+	
+	public static int fib(int n) {
+		
+		
+		if(n==0)
+			return 0;
+		
+		if(n==1)
+			return 1;
+	
+		
+		int k=fib(n-1)+fib(n-2);
+		
+		
+		//System.out.print(k+ " ");
+		
+		return k;
+	}
+}

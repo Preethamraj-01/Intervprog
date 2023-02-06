@@ -1,0 +1,73 @@
+
+//wrong approach(DOESN'T PASS ALL TEST CASES)
+
+package Array;
+
+import java.util.Arrays;
+
+public class Rotate {
+	
+	 public static void rotate(int[] nums, int k) {
+		 
+		 
+		 
+		 //TO COPY 1ST K ELEMNTS IN TO temp[]
+		 
+		 int temp[] = new int[k+1];
+		 for(int i=0;i<=k;i++) {
+			 
+			  temp[i] = nums[i];
+			 
+		 }
+		 
+		// System.out.println(Arrays.toString(temp));
+		//TO SHIFT nums[] elements to  left by k times
+		 
+		for(int i=0;i< nums.length-k  ; i++) {
+			for(int j=0; j<nums.length-1;j++) {
+			
+			nums[j] = nums[j+1];
+			
+		}
+		}
+		
+		//TO APPEND ALL temp[] elements to nums[] from k position
+		int j=0;
+		for(int i=k;i<nums.length;i++) {
+			
+			
+			nums[i] = temp[j++];
+			
+			
+		}
+		 
+		System.out.println(Arrays.toString(nums)); 
+	 }
+	
+	public  static void main(String args[]) {
+		
+		int nums[]= {1,2,3,4,5,6,10};
+		int k=3;
+		
+		
+		      rotate(nums,k);
+		
+//		   System.out.println(Arrays.toString(nums));
+//
+//		
+//		int arr[]= new int[nums.length];
+//        
+//		  for(int i=0;i<nums.length;i++){
+//		      
+//		      arr[(i+k)%nums.length] = nums[i];
+//		  }
+//		        
+//		   nums=arr; 
+//		   
+//		   System.out.println(Arrays.toString(nums));
+		
+		
+		}
+	}
+
+

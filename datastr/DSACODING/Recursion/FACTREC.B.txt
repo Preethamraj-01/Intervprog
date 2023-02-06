@@ -1,0 +1,86 @@
+
+
+  //USING LOOP
+
+
+import java.util.*;
+public class Factoral1 {
+
+	
+	
+	public static void main (String args[]) {
+		
+		
+//		Scanner s=new Scanner(System.in);
+		
+		int fact=1;
+		int n=5;
+		
+//		System.out.print(fact+" ");
+
+//		
+//		System.out.println(" enter n");
+//		  n=s.nextInt();
+//		  
+		for(int i=2;i<=n;i++) {
+			
+			fact=i*(fact);
+			
+		}
+		System.out.print(fact+" ");
+	}
+}
+
+
+public class Factorialrec {
+
+	
+	  //static int i=0;
+	public static void main(String args[]) {
+		 
+		
+		 int n=5;
+	//  int res=fact(n);
+	   int res1= fact1(n);
+	//	System.out.println(res1);
+		
+	}
+	
+	//TO PRINT FACTORIAL OF A SINGLE NUMBER N
+	
+	public static int fact(int n) {
+		
+		//FIRST MENTION BASE CONDITION
+		if(n==0 || n==1) {
+			return 1;
+		}
+		
+//		int smallerproblem=fact(n-1);
+		
+		//int biggerproblem=n*smallerproblem;          //i.e,int biggerproblem=n*fact(n-1);
+		
+		
+		return n*fact(n-1);
+		
+	}
+	
+	
+	//TO RETURN ALL THE FACTORIAL VALUES IN SEQUENCE
+	public static int fact1(int n) {
+		
+		//BASE CASE
+		
+		if(n==0)
+			return 1;
+		
+		
+		int k=fact1(n-1)*n ;
+		
+		
+		System.out.print(k+ " ");
+		
+		
+		return k;
+		
+	}
+}

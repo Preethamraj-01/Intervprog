@@ -1,0 +1,41 @@
+//PALINDROMIC SUBSTRINGS
+
+class Solution {
+    public int countSubstrings(String s) {
+        
+
+
+       int count=0;
+	
+	for(int i=0;i<=s.length()-1;i++) {
+		
+		outer : for(int j=i+1;j<=s.length();j++) {
+			
+			String subs=s.substring(i,j);
+            
+		int st=0,en=subs.length()-1;
+            while(st<en) {
+			
+
+			if(subs.charAt(st)!=subs.charAt(en))
+				continue outer;
+			
+			else {
+				st++;
+				en--;
+			  continue;
+			}
+                
+                
+			
+        }
+            count++;
+    }
+		
+		
+    }
+	
+	return count;
+    }
+}
+	

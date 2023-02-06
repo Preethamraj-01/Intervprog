@@ -1,0 +1,38 @@
+public class Solution{  
+
+    public static int findUnique(int[] arr){
+		//Your code goes here
+        //my approach
+//         for(int i=0;i<arr.length;i++){
+//             int count=0;
+//             for(int j=0;j<arr.length;j++){
+                
+//                 if(arr[i]==arr[j])
+//                     count++;
+//             }
+//              if(count<2){
+//             return arr[i];
+//         }
+//         }
+//          return 0;
+//     }
+// }
+        
+         int rev = arr[0];
+
+       for(int i=1; i<arr.length; i++)
+
+       {
+
+           rev=rev^arr[i];
+
+       }
+
+       return rev;
+
+   }
+}
+
+
+
+

@@ -1,0 +1,91 @@
+import java.util.Arrays;
+
+public class Quicksortre {
+	
+	
+	
+	static int partition(int arr[],int s,int e) {
+		
+		
+		int p=arr[s];
+		
+		
+		
+		
+		int cnt=0;
+		for(int k=s+1;k<=e;k++) {
+			
+			if(arr[k]<=p)
+			cnt++;
+			
+		}
+		
+		p=s+cnt;
+		
+		System.out.println(p);
+		int t=arr[p];
+		arr[p]=arr[s];
+		arr[s]=t;
+		
+		int i=s,j=e;
+		
+		while(i<p && j>p) {
+			
+			while(arr[i]<=p)
+			 i++;
+			
+			while(arr[j]>p)
+			 j--;
+			
+			
+			if(i<p && j>p) {
+			
+			int te = arr[i];
+			arr[i]=arr[j];
+			arr[j]=te;
+			
+			i++;
+			j--;
+			}
+		}
+		
+//		int t = arr[i];
+//		arr[i]=p;
+//		p=t;
+		
+		return p;
+		
+		
+		
+		
+	}
+
+	static void quick(int arr[],int s,int e) {
+		
+		//BASE CASE
+		if(s>=e)
+			return;
+		
+		int p = partition(arr,s,e);
+		
+		
+		quick(arr,s,p-1);
+		
+		quick(arr,p+1,e);
+	
+		
+		
+	
+	}
+	
+	public static void main(String args[]) {
+		
+		
+		int arr[]= {3,1,5,2,10,6};
+		
+		quick(arr,0,arr.length-1);
+		
+		System.out.println(Arrays.toString(arr));
+	}
+
+}

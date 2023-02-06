@@ -1,0 +1,28 @@
+//square root of  a number
+
+class Solution {
+    public int mySqrt(int x) {
+        
+        int N=x;
+        
+        if(N==0)
+            return 0;
+        
+        if(N<=3)
+            return 1;
+        
+         for(int i=0;i<=N/2 +1;i++){
+            
+            if((i*i)==N){
+                return i;
+            }
+            
+            else if((i*i)>N){
+                return i-1;
+            }
+        }
+        return -1;
+	}
+        
+        
+    }

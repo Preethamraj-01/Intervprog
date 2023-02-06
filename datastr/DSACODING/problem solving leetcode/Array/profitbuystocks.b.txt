@@ -1,0 +1,48 @@
+//T.C --> O(n)
+
+ int lsf=Integer.MAX_VALUE;
+        int msf=0;
+        for(int i=0;i<prices.length;i++){
+            lsf=Math.min(lsf,prices[i]);
+            msf=Math.max(msf,prices[i]-lsf);
+        }
+        
+        return msf;
+        
+
+
+
+//T.C --> O(n2)
+class Solution {
+    public int maxProfit(int[] prices) {
+        
+        int maxprofit = 0;
+        int profit = 0;
+       
+       for(int i=0;i<prices.length;i++){
+	            
+	            
+	            for(int j=i+1;j<prices.length;j++){
+	                
+	                
+	                if(prices[j] > prices[i]){
+	                    
+	                    profit = prices[j] - prices[i];
+	                    
+	                }
+	                
+	                
+	                if(profit > maxprofit)
+	                	maxprofit = profit;
+	                
+	                
+	            }
+	            
+	        }
+	        
+	        return maxprofit;
+	        
+	    }
+	
+        
+    }

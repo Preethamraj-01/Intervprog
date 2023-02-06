@@ -1,0 +1,63 @@
+
+public class Powerrec {
+
+	
+	
+	public static int power(int a , int b) {
+		
+		
+		//BASE CASE
+		
+		if(b==0)
+			return 1;
+		
+//          if(b==1)
+//        	  return a;
+	
+		//processing
+		
+		
+		//REC
+		
+			
+		
+		int res =a*power(a,b-1);
+		
+		return res;
+		
+			
+	
+		
+	
+	}
+	public static void main(String args[]) {
+		
+	int a=2;
+	int b=5;
+	int ans=1;
+	
+
+	System.out.println(power(a,b)); 
+	
+	b=4;
+	while(b>0){
+		
+		if(b%2==0) {
+		ans=ans*a;
+		b=b/2;
+	}
+		
+		else {
+			
+			ans=ans*a*ans;
+			b=b/2;
+		}
+		
+	}
+	System.out.println("iterative  ans = "+ans);
+		
+		
+	
+	
+	}
+}

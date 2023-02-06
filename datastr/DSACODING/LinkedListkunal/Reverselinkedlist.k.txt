@@ -1,0 +1,106 @@
+
+//Reverse a LL
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        
+        ListNode present =  head;
+        
+        
+        if(head==null)
+            return head;
+        
+        ListNode temp =  head.next;
+        
+        ListNode prev=null;
+        
+        
+        
+        while(present!=null){
+            
+            present.next=prev;
+            prev=present;
+            present=temp;
+        
+            if(temp!=null)
+                temp=temp.next;
+            
+            
+            
+        }
+        
+    return prev;
+        
+    }
+}
+
+
+
+
+
+
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        
+        ListNode node =  head;
+        
+        ListNode node =  tail;
+        
+        while(tail.next!=null){
+          tail=tail.next;
+        }   
+            reverse(head,tail,node);
+            
+
+            
+    
+        return head;
+    
+    }
+}
+     public void reverse(ListNode head,ListNode tail,ListNode node ){
+            
+            
+             if(head==tail){
+                 
+                 head=tail;
+                 return;
+             }
+            
+            
+            node = node.next;
+            
+            reverse(head,node,tail);
+            
+            tail.next=node;
+            tail=node;
+            tail.next=null;
+            
+            
+            
+        }
+        
+        
+    

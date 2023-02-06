@@ -1,0 +1,37 @@
+import java.util.Arrays;
+
+
+public class selectionsort {
+
+	public static void sort(int a[]) {
+		for(int i=0;i<a.length-1;i++) {//n-1 ROUNDS
+
+			int minindex=i;
+
+			for(int j=i+1;j<a.length;j++) {
+				
+				if(a[j]<a[minindex]) {
+					
+					//to find minimum "INDEX"
+					minindex=j;//j is index ,can't coonect with min element
+				
+				}
+			}
+				//to swap
+				int temp=a[i];
+				a[i]=a[minindex];
+				a[minindex]=temp;
+				
+			//Collections.swap(a[i], a[j]);
+			
+		}
+		System.out.println(Arrays.toString(a));
+	}
+	
+	public static void main(String args[]) {
+		
+		
+		int a[]=new int[] {62,25,22,11,13};
+		sort(a);
+	}
+}

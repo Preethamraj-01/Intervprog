@@ -1,0 +1,32 @@
+public class Solution {
+	public static int[] findArraySum(int[] a, int n, int[] b, int m) {
+		// Write your code here.
+        String s1="";
+				for(int i=0;i<n;i++) {
+					
+					s1+=a[i];
+				}
+				
+		      //  System.out.println(s1);
+				
+				String s2="";
+               for(int j=0;j<m;j++) {
+					
+					s2+=b[j];
+				}
+               //  System.out.println(s2);
+               
+               int res= Integer.parseInt(s1)+ Integer.parseInt(s2);
+               
+               
+               String temp = Integer. toString(res);
+               
+               int[] numbers = new int[temp. length()];
+               
+               for (int i = 0; i < temp. length(); i++) {
+               numbers[i] = temp. charAt(i) - '0';
+                
+			}
+             return numbers;  
+	}
+}
